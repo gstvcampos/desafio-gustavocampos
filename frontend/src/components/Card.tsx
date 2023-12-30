@@ -11,11 +11,11 @@ export default function Card({resultado}: {resultado: Resultado}){
   const bg = bgMap[resultado.disciplina];
 
   return(
-    <li className="flex">
-      <div className={`flex flex-col p-4 gap-2 w-36 h-36 rounded-2xl ${bg}`}>
+    <li className="flex p-1">
+      <div className={`flex flex-col w-40 h-36 rounded-2xl ${bg}`}>
         <p>{resultado.disciplina}</p>
         <p>{new Date(resultado.criadoEm).toLocaleDateString()}</p>
-        <p className="bg-opacity-70 bg-background">{resultado.nota}</p>        
+        <p className="bg-slate-500">{resultado.nota}</p>        
       </div>
       <DeleteButton id={resultado.id}/>
     </li>
