@@ -8,10 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        background: 'hsl(var(--background))',
+        text: {
+          primary: 'hsl(var(--text))',
+          secondary: 'hsl(var(--text-secondary))',
+        },
+        card: {
+          art: 'hsl(var(--card-art))',
+          geo: 'hsl(var(--card-geo))',
+          bio: 'hsl(var(--card-bio))',
+          soc: 'hsl(var(--card-soc))',
+        },
       },
     },
   },
