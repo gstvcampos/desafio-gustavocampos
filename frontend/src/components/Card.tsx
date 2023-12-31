@@ -1,5 +1,6 @@
+import { DialogProvider } from "@/contexts/DialogContext";
 import { Resultado } from "@/interfaces/interfaces";
-import DeleteButton from "./DeleteButton";
+import DeleteButton from "./Buttons/DeleteButton";
 
 export default function Card({resultado}: {resultado: Resultado}){
   const bgMap = {
@@ -17,7 +18,9 @@ export default function Card({resultado}: {resultado: Resultado}){
         <p>{new Date(resultado.criadoEm).toLocaleDateString()}</p>
         <p className="bg-slate-500">{resultado.nota}</p>        
       </div>
-      <DeleteButton id={resultado.id}/>
+      <DialogProvider>
+        <DeleteButton id={resultado.id}/>
+      </DialogProvider>
     </li>
   )
 }

@@ -1,4 +1,6 @@
+import CreateButton from '@/components/Buttons/CreateButton'
 import Card from '@/components/Card'
+import { DialogProvider } from '@/contexts/DialogContext'
 import { Resultado } from '@/interfaces/interfaces'
 
 export default async function Home() {
@@ -11,15 +13,17 @@ export default async function Home() {
   const bimestres = ["PRIMEIRO", "SEGUNDO", "TERCEIRO", "QUARTO"]
 
   return (
-    <main className="bg-background text-text-primary flex min-h-screen flex-col items-center p-24">
-      <div>
+    <main className="bg-background text-text-primary min-h-screen min-w-full">
+      <div className="py-16 max-w-4xl m-auto px-6">
         {bimestres.map((bim, idx) => 
         <div key={idx}>
           <div className='flex justify-between'>
             <h2>Bimestre {idx+1}</h2>
-            <button>adicionar</button>
+            <DialogProvider>
+              <CreateButton/>
+            </DialogProvider>
           </div>
-          <ul className='flex p-10 flex-wrap'>
+          <ul className='flex flex-wrap'>
             {resultados.map((resultado) => (resultado.bimestre === bim && 
               <Card key={resultado.id} resultado={resultado}/>
             ))}
