@@ -14,16 +14,16 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen">
-      <div className="mx-auto w-full max-w-screen-xl px-2.5 md:px-20">
+      <div className="mx-auto w-full max-w-screen-xl py-16 px-2.5 md:px-20">
         {bimestres.map((bim, idx) => (
           <div key={idx}>
             <div className="flex justify-between">
-              <h2>Bimestre {idx + 1}</h2>
+              <h2 className="text-lg font-medium">Bimestre {idx + 1}</h2>
               <DialogProvider>
                 <CreateButton />
               </DialogProvider>
             </div>
-            <ul className="flex flex-wrap">
+            <ul className="flex flex-wrap py-8">
               {resultados.map(
                 (resultado) =>
                   resultado.bimestre === bim && (

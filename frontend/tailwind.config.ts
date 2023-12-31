@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         background: 'hsl(var(--background))',
+        button: 'hsl(var(--button))',
         text: {
           primary: 'hsl(var(--text))',
           secondary: 'hsl(var(--text-secondary))',

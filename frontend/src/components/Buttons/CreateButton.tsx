@@ -10,7 +10,11 @@ export default function CreateButton() {
 
   return (
     <>
-      <button className="bg-orange-500" onClick={toggleCreate}>
+      <button
+        className="bg-button flex font-semibold items-center px-4 py-1 rounded-xl"
+        onClick={toggleCreate}
+      >
+        <span className="text-black px-2 hidden md:block">Lançar nota</span>
         <Image
           priority={true}
           src="plus.svg"
