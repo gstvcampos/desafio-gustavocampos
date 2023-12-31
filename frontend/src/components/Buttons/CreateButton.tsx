@@ -8,9 +8,9 @@ import CreateModal from '../Modals/CreateModal'
 export default function CreateButton() {
   const { toggleCreate } = useContext(DialogContext)
 
-  return(
+  return (
     <>
-      <button className='bg-orange-500' onClick={toggleCreate}>
+      <button className="bg-orange-500" onClick={toggleCreate}>
         <Image
           priority={true}
           src="plus.svg"
@@ -19,7 +19,7 @@ export default function CreateButton() {
           alt="icone mais"
         />
       </button>
-      <CreateModal/>
+      <CreateModal />
     </>
   )
 }

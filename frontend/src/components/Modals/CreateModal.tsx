@@ -6,7 +6,6 @@ import { useContext } from 'react'
 export default function CreateModal() {
   const { openCreate, toggleCreate } = useContext(DialogContext)
 
-
   return (
     <>
       {openCreate && (
