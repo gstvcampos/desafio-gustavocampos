@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         background: 'hsl(var(--background))',
         button: 'hsl(var(--button))',
+        border: 'hsl(var(--border))',
         text: {
           primary: 'hsl(var(--text))',
           secondary: 'hsl(var(--text-secondary))',
