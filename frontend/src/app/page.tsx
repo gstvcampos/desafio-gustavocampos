@@ -3,13 +3,15 @@ import Card from '@/components/Card'
 import { DialogProvider } from '@/contexts/DialogContext'
 import { Resultado } from '@/interfaces/interfaces'
 
-export default async function Home() {
-  const response = await fetch('http://127.0.0.1:3000/resultados/', {
+async function getResultads() {
+  const res = await fetch('http://127.0.0.1:3000/resultados/', {
     cache: 'no-store',
   })
+  return res.json()
+}
 
-  const resultados: Resultado[] = await response.json()
-
+export default async function Home() {
+  const resultados: Resultado[] = await getResultads()
   const bimestres = ['PRIMEIRO', 'SEGUNDO', 'TERCEIRO', 'QUARTO']
 
   return (

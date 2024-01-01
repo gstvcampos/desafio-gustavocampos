@@ -1,5 +1,6 @@
 'use client'
 
+import delResultado from '@/actions/delResultado'
 import { DialogContext } from '@/contexts/DialogContext'
 import useKeyDown from '@/hooks/useKeyDown'
 import { useOutClickOutside } from '@/hooks/useOutClickOutside'
@@ -33,7 +34,7 @@ export default function DeleteModal({ id }: { id: string }) {
                 Tem certeza de que deseja excluir esta nota?
               </p>
               <footer className="flex justify-end">
-                <button className="bg-button rounded-xl py-2 px-8">
+                <button className="bg-button rounded-xl py-2 px-8" onClick={() => delResultado(id)}>
                   <span className="text-black font-semibold">Confirmar</span>
                 </button>
               </footer>

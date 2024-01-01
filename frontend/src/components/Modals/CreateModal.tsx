@@ -1,16 +1,18 @@
 'use client'
 
+import addResultado from '@/actions/addResultado'
 import { DialogContext } from '@/contexts/DialogContext'
 import useKeyDown from '@/hooks/useKeyDown'
 import { useOutClickOutside } from '@/hooks/useOutClickOutside'
 import Image from 'next/image'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
+
 
 export default function CreateModal() {
   const { openCreate, toggleCreate } = useContext(DialogContext)
   const modalRef = useOutClickOutside(toggleCreate)
   const buttonRef = useKeyDown(toggleCreate)
-
+  const ref = useRef<HTMLFormElement>(null)
 
   return (
     <>
@@ -30,6 +32,11 @@ export default function CreateModal() {
                   />
                 </button>
               </header>
+              <form ref={ref} action={addResultado}>
+                <input type="text" />
+                <input type="text" />
+                <button type='submit'>asadas</button>
+              </form>
               <h3 className="text-lg py-6">Disciplina</h3>
               <div className="flex gap-4">
                 <button className="rounded-xl py-2 px-8 bg-card-bio">
