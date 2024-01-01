@@ -5,14 +5,24 @@ import { DialogContext } from '@/contexts/DialogContext'
 import useKeyDown from '@/hooks/useKeyDown'
 import { useOutClickOutside } from '@/hooks/useOutClickOutside'
 import Image from 'next/image'
-import { useContext, useRef } from 'react'
+import { useContext } from 'react'
+import { toast } from 'sonner'
 
 
 export default function CreateModal() {
   const { openCreate, toggleCreate } = useContext(DialogContext)
   const modalRef = useOutClickOutside(toggleCreate)
   const buttonRef = useKeyDown(toggleCreate)
-  const ref = useRef<HTMLFormElement>(null)
+
+  const handleConfirm = async () => {
+    try {
+      await addResultado()
+      toggleCreate()
+      toast.success("Resultado criado")
+    } catch (error) {
+      toast.error("Erro, tente novamente mais tarde")
+    }
+  }
 
   return (
     <>
@@ -32,7 +42,7 @@ export default function CreateModal() {
                   />
                 </button>
               </header>
-              <form ref={ref} action={addResultado}>
+              <form action={handleConfirm}>
                 <input type="text" />
                 <input type="text" />
                 <button type='submit'>asadas</button>

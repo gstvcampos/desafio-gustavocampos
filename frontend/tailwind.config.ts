@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         background: 'hsl(var(--background))',
+        opacity: 'hsl(var(--background) / 0.7)',
         button: 'hsl(var(--button))',
         border: 'hsl(var(--border))',
         text: {
@@ -21,6 +22,11 @@ const config: Config = {
           geo: 'hsl(var(--card-geo))',
           bio: 'hsl(var(--card-bio))',
           soc: 'hsl(var(--card-soc))',
+        },
+        note: {
+          low: 'hsl(var(--low))',
+          average: 'hsl(var(--average))',
+          high: 'hsl(var(--high))',
         },
       },
     },
