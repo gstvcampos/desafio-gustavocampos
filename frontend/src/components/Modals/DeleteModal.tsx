@@ -6,11 +6,22 @@ import useKeyDown from '@/hooks/useKeyDown'
 import { useOutClickOutside } from '@/hooks/useOutClickOutside'
 import Image from 'next/image'
 import { useContext } from 'react'
+import { toast } from 'sonner'
 
 export default function DeleteModal({ id }: { id: string }) {
   const { openDelete, toggleDelete } = useContext(DialogContext)
   const modalRef = useOutClickOutside(toggleDelete)
   const buttonRef = useKeyDown(toggleDelete)
+
+  const handleConfirm = async () => {
+    try {
+      await delResultado(id)
+      toggleDelete()
+      toast.success("Resultado deletado")
+    } catch (error) {
+      toast.error("Erro, tente novamente mais tarde")
+    }
+  }
 
   return (
     <>
@@ -34,7 +45,7 @@ export default function DeleteModal({ id }: { id: string }) {
                 Tem certeza de que deseja excluir esta nota?
               </p>
               <footer className="flex justify-end">
-                <button className="bg-button rounded-xl py-2 px-8" onClick={() => delResultado(id)}>
+                <button className="bg-button rounded-xl py-2 px-8" onClick={handleConfirm}>
                   <span className="text-black font-semibold">Confirmar</span>
                 </button>
               </footer>

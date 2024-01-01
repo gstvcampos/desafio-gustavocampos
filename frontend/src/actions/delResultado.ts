@@ -7,5 +7,4 @@ export default async function delResultado(id: string) {
       "Content-Type": "application/json"
     },
   })
-  
 }
