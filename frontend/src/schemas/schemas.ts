@@ -14,5 +14,3 @@ export const createResultadoSchema = resultadoSchema.omit({
   criadoEm: true,
   atualizadoEm: true,
 })
-
-export const partialResultadoSchema = createResultadoSchema.partial()

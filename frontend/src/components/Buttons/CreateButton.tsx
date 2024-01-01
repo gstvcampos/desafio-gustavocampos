@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useContext } from 'react'
 import CreateModal from '../Modals/CreateModal'
 
-export default function CreateButton() {
+export default function CreateButton({ bimestre }: { bimestre: string }) {
   const { toggleCreate } = useContext(DialogContext)
 
   return (
@@ -23,7 +23,7 @@ export default function CreateButton() {
           alt="icone mais"
         />
       </button>
-      <CreateModal />
+      <CreateModal bimestre={bimestre} />
     </>
   )
 }

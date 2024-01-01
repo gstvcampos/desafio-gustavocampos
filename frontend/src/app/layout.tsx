@@ -2,8 +2,8 @@ import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { ReactNode } from 'react'
-import './globals.css'
 import { Toaster } from 'sonner'
+import './globals.css'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           montserrat.className,
         )}
       >
-        <Toaster/>
+        <Toaster />
         {children}
       </body>
     </html>

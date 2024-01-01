@@ -18,10 +18,10 @@ const config: Config = {
           secondary: 'hsl(var(--text-secondary))',
         },
         card: {
-          art: 'hsl(var(--card-art))',
-          geo: 'hsl(var(--card-geo))',
-          bio: 'hsl(var(--card-bio))',
-          soc: 'hsl(var(--card-soc))',
+          art: 'hsl(var(--card-art) / <alpha-value>)',
+          geo: 'hsl(var(--card-geo) / <alpha-value>)',
+          bio: 'hsl(var(--card-bio) / <alpha-value>)',
+          soc: 'hsl(var(--card-soc) / <alpha-value>)',
         },
         note: {
           low: 'hsl(var(--low))',
