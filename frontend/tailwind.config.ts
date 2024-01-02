@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        opacity: 'hsl(var(--background) / 0.7)',
+        background: 'hsl(var(--background)/ <alpha-value>)',
         button: 'hsl(var(--button))',
         border: 'hsl(var(--border))',
         text: {
           primary: 'hsl(var(--text))',
           secondary: 'hsl(var(--text-secondary))',
+          black: 'hsl(var(--text-black) / <alpha-value>)',
         },
         card: {
           art: 'hsl(var(--card-art) / <alpha-value>)',

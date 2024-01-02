@@ -20,9 +20,13 @@ export default function CreateModal({
   bimestre: string
   title: string
 }) {
+  const handleClose = () => {
+    toggleCreate()
+    reset()
+  }
   const { openCreate, toggleCreate } = useContext(DialogContext)
-  const modalRef = useOutClickOutside(toggleCreate)
-  const buttonRef = useKeyDown(toggleCreate)
+  const modalRef = useOutClickOutside(handleClose)
+  const buttonRef = useKeyDown(handleClose)
 
   const {
     register,
@@ -52,12 +56,15 @@ export default function CreateModal({
   return (
     <>
       {openCreate && (
-        <div className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-50">
+        <div className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-80">
           <div className="flex min-h-screen items-center justify-center">
-            <div ref={modalRef} className="bg-background py-8 px-12">
-              <header className="flex items-center justify-between">
+            <div
+              ref={modalRef}
+              className="bg-background py-4 px-12 max-w-[calc(100%-40px)]"
+            >
+              <header className="flex items-center justify-between py-8">
                 <h2 className="text-3xl">{title}</h2>
-                <button ref={buttonRef} onClick={toggleCreate}>
+                <button ref={buttonRef} onClick={handleClose}>
                   <Image
                     priority={true}
                     src="x.svg"
@@ -67,9 +74,12 @@ export default function CreateModal({
                   />
                 </button>
               </header>
-              <form onSubmit={handleSubmit(handleAdd)}>
-                <span className="text-lg py-6">Disciplina</span>
-                <div className="flex gap-4">
+              <form
+                onSubmit={handleSubmit(handleAdd)}
+                className="flex flex-col"
+              >
+                <span className="text-lg pb-1">Disciplina</span>
+                <div className="flex gap-4 flex-wrap">
                   <DisciplinaButton
                     nome={'Biologia'}
                     style={'bg-card-bio'}
@@ -96,11 +106,11 @@ export default function CreateModal({
                     Selecione uma disciplina
                   </span>
                 )}
-                <label className="pb-2 text-sm">Nota</label>
+                <label className="text-sm pt-4 pb-1">Nota</label>
                 <input
                   {...register('nota')}
                   type="text"
-                  className="px-4 w-20 text-text-secondary py-3 bg-background rounded-xl border-border border-[1px]"
+                  className="px-6 focus:outline-none w-20 text-text-secondary py-2 bg-background rounded-xl border-border border-[1px]"
                 />
                 {errors.nota && (
                   <span className="text-xs text-red-600">
@@ -111,7 +121,9 @@ export default function CreateModal({
                   className="bg-button rounded-xl py-2 px-8 self-end"
                   type="submit"
                 >
-                  <span className="text-black font-semibold">Confirmar</span>
+                  <span className="text-text-black font-semibold">
+                    Confirmar
+                  </span>
                 </button>
               </form>
             </div>

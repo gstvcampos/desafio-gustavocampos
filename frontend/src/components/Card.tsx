@@ -39,7 +39,7 @@ export default function Card({ resultado }: { resultado: Resultado }) {
           </div>
           <div
             className={cn(
-              'inline-flex items-center bg-opacity px-4 py-1 gap-2',
+              'inline-flex items-center bg-background bg-opacity-70 px-4 py-1 gap-2',
               notaColor,
             )}
           >
