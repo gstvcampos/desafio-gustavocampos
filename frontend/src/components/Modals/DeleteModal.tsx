@@ -1,6 +1,6 @@
 'use client'
 
-import delResultado from '@/actions/delResultado'
+import handleDelete from '@/actions/handleDelete'
 import { DialogContext } from '@/contexts/DialogContext'
 import useKeyDown from '@/hooks/useKeyDown'
 import { useOutClickOutside } from '@/hooks/useOutClickOutside'
@@ -13,13 +13,13 @@ export default function DeleteModal({ id }: { id: string }) {
   const modalRef = useOutClickOutside(toggleDelete)
   const buttonRef = useKeyDown(toggleDelete)
 
-  const handleConfirm = async () => {
+  const handleDel = async () => {
     try {
-      await delResultado(id)
+      await handleDelete(id)
       toggleDelete()
       toast.success('Resultado deletado')
     } catch (error) {
-      toast.error('Erro, tente novamente mais tarde')
+      toast.error('Erro no fetch, tente novamente mais tarde')
     }
   }
 
@@ -47,7 +47,7 @@ export default function DeleteModal({ id }: { id: string }) {
               <footer className="flex justify-end">
                 <button
                   className="bg-button rounded-xl py-2 px-8"
-                  onClick={handleConfirm}
+                  onClick={handleDel}
                 >
                   <span className="text-black font-semibold">Confirmar</span>
                 </button>
