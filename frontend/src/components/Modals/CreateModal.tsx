@@ -46,7 +46,7 @@ export default function CreateModal({
     } else {
       reset()
       toggleCreate()
-      toast.success('Resultado criado')
+      toast.success('Nota lançada com sucesso')
     }
   }
 
