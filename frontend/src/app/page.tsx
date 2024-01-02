@@ -18,10 +18,10 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen">
-      <div className="mx-auto w-full max-w-screen-xl py-16 px-2.5 md:px-20">
+      <div className="mx-auto w-full max-w-screen-lg py-16 px-2.5 md:px-20">
         {bimestres.map((SelectBim, idx) => (
           <div key={idx}>
-            <div className="flex justify-between">
+            <div className="flex justify-between px-4">
               <h2 className="text-lg font-medium">Bimestre {idx + 1}</h2>
               <DialogProvider>
                 <CreateButton />
@@ -31,7 +31,7 @@ export default async function Home() {
                 />
               </DialogProvider>
             </div>
-            <ul className="flex flex-wrap py-8">
+            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-8 px-4 md:px-0 md:gap-2">
               {disciplinas.map((SelectDis) =>
                 resultados
                   .filter(

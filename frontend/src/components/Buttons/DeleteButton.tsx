@@ -3,23 +3,22 @@
 import { DialogContext } from '@/contexts/DialogContext'
 import Image from 'next/image'
 import { useContext } from 'react'
-import DeleteModal from '../Modals/DeleteModal'
 
-export default function DeleteButton({ id }: { id: string }) {
+export default function DeleteButton() {
   const { toggleDelete } = useContext(DialogContext)
 
   return (
-    <>
-      <button className="h-8 p-1" onClick={toggleDelete}>
-        <Image
-          priority={true}
-          src="trash.svg"
-          width={32}
-          height={32}
-          alt="icone lixeira"
-        />
-      </button>
-      <DeleteModal id={id} />
-    </>
+    <button
+      className="inline-block flex-shrink-0 h-8 w-10 p-1"
+      onClick={toggleDelete}
+    >
+      <Image
+        priority={true}
+        src="trash.svg"
+        width={32}
+        height={32}
+        alt="icone lixeira"
+      />
+    </button>
   )
 }
