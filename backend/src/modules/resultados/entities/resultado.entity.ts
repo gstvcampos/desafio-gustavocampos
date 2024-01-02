@@ -1,4 +1,4 @@
-import { Bimestre, Disciplina } from '@prisma/client'
+import { Bimestre, Disciplina } from '../dto/create-resultado.dto'
 
 export class Resultado {
   id: string

@@ -1,5 +1,18 @@
-import { Bimestre, Disciplina } from '@prisma/client'
 import { IsEnum, IsNumber, Max, Min } from 'class-validator'
+
+export enum Bimestre {
+  PRIMEIRO = 'PRIMEIRO',
+  SEGUNDO = 'SEGUNDO',
+  TERCEIRO = 'TERCEIRO',
+  QUARTO = 'QUARTO',
+}
+
+export enum Disciplina {
+  BIOLOGIA = 'BIOLOGIA',
+  ARTES = 'ARTES',
+  GEOGRAFIA = 'GEOGRAFIA',
+  SOCIOLOGIA = 'SOCIOLOGIA',
+}
 
 export class CreateResultadoDto {
   @IsEnum(Bimestre, {

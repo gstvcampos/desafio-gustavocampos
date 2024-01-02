@@ -3,9 +3,13 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common'
-import { Bimestre, Disciplina } from '@prisma/client'
+
 import { PrismaService } from 'src/database/prisma.service'
-import { CreateResultadoDto } from './dto/create-resultado.dto'
+import {
+  Bimestre,
+  CreateResultadoDto,
+  Disciplina,
+} from './dto/create-resultado.dto'
 import { UpdateResultadoDto } from './dto/update-resultado.dto'
 import { Resultado } from './entities/resultado.entity'
 
