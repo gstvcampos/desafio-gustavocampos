@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-BR" className="h-full">
+    <html lang="pt-BR">
       <body
         className={cn(
           montserrat.className,
-          'relative h-full font-sans antialiased bg-background text-text-primary',
+          'relative h-full bg-background text-text-primary antialiased',
         )}
       >
         <Toaster />
