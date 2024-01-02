@@ -25,7 +25,7 @@ Front-end: Next.js e Tailwind CSS
 7. Então crie as migrações "npx prisma migrate dev"
 8. Execute o comando "npm run start:dev" para iniciar o servidor em modo de desenvolvimento
 
-[Link da Documentação](https://customer-contact.onrender.com/api#/Users)
+[Link da Documentação](https://resultados-sxpu.onrender.com/docs/)
 
 **FRONT-END**
 
