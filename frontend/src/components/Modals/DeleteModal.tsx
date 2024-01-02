@@ -26,9 +26,12 @@ export default function DeleteModal({ id }: { id: string }) {
   return (
     <>
       {openDelete && (
-        <div className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-50">
+        <div className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-80">
           <div className="flex min-h-screen items-center justify-center">
-            <div ref={modalRef} className="bg-background py-8 px-12">
+            <div
+              ref={modalRef}
+              className="bg-background py-4 px-12 max-w-[calc(100%-40px)]"
+            >
               <header className="flex items-center justify-between">
                 <h3 className="text-3xl">Excluir nota</h3>
                 <button onClick={toggleDelete} ref={buttonRef}>
