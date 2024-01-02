@@ -1,6 +1,6 @@
 'use client'
 
-import addResultado from '@/actions/addResultado'
+import handleCreate from '@/actions/handleCreate'
 import { DialogContext } from '@/contexts/DialogContext'
 import useKeyDown from '@/hooks/useKeyDown'
 import { useOutClickOutside } from '@/hooks/useOutClickOutside'
@@ -37,13 +37,15 @@ export default function CreateModal({
       bimestre,
     }
     try {
-      addResultado(newData)
+      await handleCreate(newData)
       toggleCreate()
       reset()
       toast.success('Resultado criado')
     } catch (error) {
-      reset()
-      toast.error('Erro, tente novamente mais tarde')
+      if (error instanceof Error) {
+        reset()
+        toast.error(error.message)
+      }
     }
   }
 
