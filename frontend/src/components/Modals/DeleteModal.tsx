@@ -44,7 +44,7 @@ export default function DeleteModal({ id }: { id: string }) {
                   />
                 </button>
               </header>
-              <p className="my-8 text-center text-lg">
+              <p className="my-4 text-center">
                 Tem certeza de que deseja excluir esta nota?
               </p>
               <footer className="flex justify-end">
