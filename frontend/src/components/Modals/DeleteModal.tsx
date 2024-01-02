@@ -19,7 +19,7 @@ export default function DeleteModal({ id }: { id: string }) {
       toast.error(res.error)
     } else {
       toggleDelete()
-      toast.success('Resultado deletado')
+      toast.success('Nota deletada com sucesso')
     }
   }
 
