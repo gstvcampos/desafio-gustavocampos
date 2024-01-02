@@ -33,3 +33,5 @@ Front-end: Next.js e Tailwind CSS
 2. Em seguida, acesse o diretório do projeto "cd frontend"
 3. Instale as dependências "npm install"
 4. Execute o "npm run dev" para iniciar a aplicação em modo de desenvolvimento
+
+[Projeto live](https://desafio-gustavocampos.vercel.app/)
