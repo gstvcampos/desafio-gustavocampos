@@ -4,7 +4,7 @@ import { CreateResultado } from '@/interfaces/interfaces'
 import { revalidatePath } from 'next/cache'
 
 export default async function handleCreate(formData: CreateResultado) {
-  const res = await fetch('http://127.0.0.1:3000/resultados/', {
+  const res = await fetch('https://resultados-sxpu.onrender.com/resultados/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
