@@ -19,7 +19,7 @@ export default function useKeyDown(
     return () => {
       window.removeEventListener('keydown', handleEscape)
     }
-  }, [])
+  }, [callback])
 
   return ref
 }

@@ -19,7 +19,7 @@ export const useOutClickOutside = (callback: () => void) => {
       window.removeEventListener('mousedown', handleOutClick)
       window.removeEventListener('touchstart', handleOutClick)
     }
-  }, [])
+  }, [callback])
 
   return ref
 }
