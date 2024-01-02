@@ -1,19 +1,20 @@
 'use server'
 
+import { getErrorMessage } from '@/lib/utils'
 import { revalidatePath } from 'next/cache'
 
 export default async function handleDelete(id: string) {
-  const res = await fetch(
-    `https://resultados-sxpu.onrender.com/resultados/${id}`,
-    {
+  try {
+    await fetch(`https://resultados-sxpu.onrender.com/resultados/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
-    },
-  )
-  if (!res.ok) {
-    throw new Error('Falha no fetch.')
+    })
+  } catch (error) {
+    return {
+      error: getErrorMessage(error),
+    }
   }
 
   revalidatePath('/')

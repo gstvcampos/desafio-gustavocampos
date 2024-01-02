@@ -14,12 +14,12 @@ export default function DeleteModal({ id }: { id: string }) {
   const buttonRef = useKeyDown(toggleDelete)
 
   const handleDel = async () => {
-    try {
-      await handleDelete(id)
+    const res = await handleDelete(id)
+    if (res?.error) {
+      toast.error(res.error)
+    } else {
       toggleDelete()
       toast.success('Resultado deletado')
-    } catch (error) {
-      toast.error('Erro no fetch, tente novamente mais tarde')
     }
   }
 

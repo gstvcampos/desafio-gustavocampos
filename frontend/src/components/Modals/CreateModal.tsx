@@ -40,16 +40,13 @@ export default function CreateModal({
       ...data,
       bimestre,
     }
-    try {
-      await handleCreate(newData)
-      toggleCreate()
+    const res = await handleCreate(newData)
+    if (res?.error) {
+      toast.error(res.error)
+    } else {
       reset()
+      toggleCreate()
       toast.success('Resultado criado')
-    } catch (error) {
-      if (error instanceof Error) {
-        reset()
-        toast.error(error.message)
-      }
     }
   }
 
