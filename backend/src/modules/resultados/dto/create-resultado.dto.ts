@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger'
 import { IsEnum, IsNumber, Max, Min } from 'class-validator'
 
 export enum Bimestre {
@@ -15,6 +16,10 @@ export enum Disciplina {
 }
 
 export class CreateResultadoDto {
+  @ApiProperty({
+    description: 'Bimestre para lançamento',
+    example: 'PRIMEIRO',
+  })
   @IsEnum(Bimestre, {
     message:
       'Valor invalido para Bimestre, ' +
@@ -22,6 +27,10 @@ export class CreateResultadoDto {
   })
   bimestre: Bimestre
 
+  @ApiProperty({
+    description: 'Disciplina para lançamento',
+    example: 'BIOLOGIA',
+  })
   @IsEnum(Disciplina, {
     message:
       'Valor invalido para Disciplina, ' +
@@ -29,6 +38,10 @@ export class CreateResultadoDto {
   })
   disciplina: Disciplina
 
+  @ApiProperty({
+    description: 'Nota para lançamento',
+    example: 7.5,
+  })
   @IsNumber()
   @Min(0)
   @Max(10)

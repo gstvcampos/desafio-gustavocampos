@@ -7,10 +7,12 @@ import {
   Patch,
   Post,
 } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import { CreateResultadoDto } from './dto/create-resultado.dto'
 import { UpdateResultadoDto } from './dto/update-resultado.dto'
 import { ResultadosService } from './resultados.service'
 
+@ApiTags('resultados')
 @Controller('resultados')
 export class ResultadosController {
   constructor(private readonly resultadosService: ResultadosService) {}
