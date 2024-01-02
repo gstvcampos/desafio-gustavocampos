@@ -1,5 +1,6 @@
 import CreateButton from '@/components/Buttons/CreateButton'
 import Card from '@/components/Card'
+import CreateModal from '@/components/Modals/CreateModal'
 import { DialogProvider } from '@/contexts/DialogContext'
 import { Resultado } from '@/interfaces/interfaces'
 
@@ -23,7 +24,11 @@ export default async function Home() {
             <div className="flex justify-between">
               <h2 className="text-lg font-medium">Bimestre {idx + 1}</h2>
               <DialogProvider>
-                <CreateButton bimestre={SelectBim} />
+                <CreateButton />
+                <CreateModal
+                  bimestre={SelectBim}
+                  title={`Bimestre ${idx + 1}`}
+                />
               </DialogProvider>
             </div>
             <ul className="flex flex-wrap py-8">

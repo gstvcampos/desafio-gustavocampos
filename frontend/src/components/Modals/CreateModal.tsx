@@ -1,51 +1,48 @@
 'use client'
 
+import addResultado from '@/actions/addResultado'
 import { DialogContext } from '@/contexts/DialogContext'
 import useKeyDown from '@/hooks/useKeyDown'
 import { useOutClickOutside } from '@/hooks/useOutClickOutside'
 import { CreateResultado } from '@/interfaces/interfaces'
-import { cn } from '@/lib/utils'
 import { createResultadoSchema } from '@/schemas/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import DisciplinaButton from '../Buttons/DisciplinaButton'
 
-const numberBim: Record<string, number> = {
-  PRIMEIRO: 1,
-  SEGUNDO: 2,
-  TERCEIRO: 3,
-  QUARTO: 4,
-}
-
-const disciplinas = [
-  { nome: 'Biologia', style: 'bg-card-bio', valor: 'BIOLOGIA' },
-  { nome: 'Artes', style: 'bg-card-art', valor: 'ARTES' },
-  { nome: 'Geografia', style: 'bg-card-geo', valor: 'GEOGRAFIA' },
-  { nome: 'Sociologia', style: 'bg-card-soc', valor: 'SOCIOLOGIA' },
-]
-
-export default function CreateModal({ bimestre }: { bimestre: string }) {
+export default function CreateModal({
+  bimestre,
+  title,
+}: {
+  bimestre: string
+  title: string
+}) {
   const { openCreate, toggleCreate } = useContext(DialogContext)
   const modalRef = useOutClickOutside(toggleCreate)
   const buttonRef = useKeyDown(toggleCreate)
-  const title = `Bimestre ${numberBim[bimestre]}`
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<CreateResultado>({ resolver: zodResolver(createResultadoSchema) })
 
   const handleAdd = async (data: CreateResultado) => {
-    console.log(data)
-    createResultadoSchema.parse(data)
+    const newData = {
+      ...data,
+      bimestre,
+    }
     try {
-      // await addResultado()
+      addResultado(newData)
       toggleCreate()
+      reset()
       toast.success('Resultado criado')
     } catch (error) {
+      reset()
       toast.error('Erro, tente novamente mais tarde')
     }
   }
@@ -57,7 +54,7 @@ export default function CreateModal({ bimestre }: { bimestre: string }) {
           <div className="flex min-h-screen items-center justify-center">
             <div ref={modalRef} className="bg-background py-8 px-12">
               <header className="flex items-center justify-between">
-                <h3 className="text-3xl">{title}</h3>
+                <h2 className="text-3xl">{title}</h2>
                 <button ref={buttonRef} onClick={toggleCreate}>
                   <Image
                     priority={true}
@@ -69,52 +66,45 @@ export default function CreateModal({ bimestre }: { bimestre: string }) {
                 </button>
               </header>
               <form onSubmit={handleSubmit(handleAdd)}>
-                {errors.bimestre && (
-                  <p className="text-xs text-red-600">
-                    {errors.bimestre.message}
-                  </p>
-                )}
-                <h3 className="text-lg py-6">Disciplina</h3>
+                <span className="text-lg py-6">Disciplina</span>
                 <div className="flex gap-4">
-                  {disciplinas.map((disc) => (
-                    <div key={disc.nome} className="flex items-center">
-                      <label
-                        htmlFor={disc.valor}
-                        className={cn(
-                          'rounded-xl py-2 px-8 bg-opacity-20 cursor-pointer hover:bg-opacity-100',
-                          disc.style,
-                        )}
-                      >
-                        <input
-                          {...register('disciplina')}
-                          type="radio"
-                          value={disc.valor}
-                          id={disc.valor}
-                          className="hidden"
-                        />
-                        <span className="font-medium text-lg">{disc.nome}</span>
-                      </label>
-                    </div>
-                  ))}
+                  <DisciplinaButton
+                    nome={'Biologia'}
+                    style={'bg-card-bio'}
+                    register={register}
+                  />
+                  <DisciplinaButton
+                    nome={'Artes'}
+                    style={'bg-card-art'}
+                    register={register}
+                  />
+                  <DisciplinaButton
+                    nome={'Geografia'}
+                    style={'bg-card-geo'}
+                    register={register}
+                  />
+                  <DisciplinaButton
+                    nome={'Sociologia'}
+                    style={'bg-card-soc'}
+                    register={register}
+                  />
                 </div>
                 {errors.disciplina && (
-                  <p className="text-xs text-red-600">
+                  <span className="text-xs text-red-600">
                     Selecione uma disciplina
-                  </p>
+                  </span>
                 )}
-                <div className="flex flex-col items-start py-6">
-                  <label className="pb-2 text-sm">Nota</label>
-                  <input
-                    {...register('nota')}
-                    type="number"
-                    className="px-4 w-20 text-text-secondary py-3 bg-background rounded-xl border-border border-[1px]"
-                  />
-                  {errors.nota && (
-                    <p className="text-xs text-red-600">
-                      {errors.nota.message}
-                    </p>
-                  )}
-                </div>
+                <label className="pb-2 text-sm">Nota</label>
+                <input
+                  {...register('nota')}
+                  type="text"
+                  className="px-4 w-20 text-text-secondary py-3 bg-background rounded-xl border-border border-[1px]"
+                />
+                {errors.nota && (
+                  <span className="text-xs text-red-600">
+                    {errors.nota.message}
+                  </span>
+                )}
                 <button
                   className="bg-button rounded-xl py-2 px-8 self-end"
                   type="submit"
