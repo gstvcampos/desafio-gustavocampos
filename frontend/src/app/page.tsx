@@ -5,18 +5,10 @@ import { DialogProvider } from '@/contexts/DialogContext'
 import { Resultado } from '@/interfaces/interfaces'
 
 async function getResultads() {
-  try {
-    const res = await fetch(
-      'https://resultados-sxpu.onrender.com/resultados/',
-      {
-        cache: 'no-store',
-      },
-    )
-    return res.json()
-  } catch (error) {
-    console.log('Falha no fetch')
-    getResultads()
-  }
+  const res = await fetch('https://resultados-sxpu.onrender.com/resultados/', {
+    cache: 'no-store',
+  })
+  return res.json()
 }
 
 export default async function Home() {
