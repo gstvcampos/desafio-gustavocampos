@@ -5,7 +5,7 @@ import { DialogProvider } from '@/contexts/DialogContext'
 import { Resultado } from '@/interfaces/interfaces'
 
 async function getResultads() {
-  const res = await fetch('https://resultados-sxpu.onrender.com/resultados/', {
+  const res = await fetch('https://desafio-gustavocampos.onrender.com', {
     cache: 'no-store',
   })
   return res.json()
