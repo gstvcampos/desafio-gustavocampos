@@ -7,7 +7,7 @@ import { revalidatePath } from 'next/cache'
 export default async function handleCreate(formData: CreateResultado) {
   try {
     const res = await fetch(
-      'https://resultados-sxpu.onrender.com/resultados/',
+      'https://desafio-gustavocampos.onrender.com/resultados/',
       {
         method: 'POST',
         headers: {
