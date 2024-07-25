@@ -11,7 +11,6 @@ async function getResultads() {
   return res.json()
 }
 
-
 export default async function Home() {
   const resultados: Resultado[] = await getResultads()
   const bimestres = ['PRIMEIRO', 'SEGUNDO', 'TERCEIRO', 'QUARTO']
