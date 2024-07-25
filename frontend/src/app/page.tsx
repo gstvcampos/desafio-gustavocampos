@@ -5,9 +5,12 @@ import { DialogProvider } from '@/contexts/DialogContext'
 import { Resultado } from '@/interfaces/interfaces'
 
 async function getResultads() {
-  const res = await fetch('https://desafio-gustavocampos.onrender.com/resultados/', {
-    cache: 'no-store',
-  })
+  const res = await fetch(
+    'https://desafio-gustavocampos.onrender.com/resultados/',
+    {
+      cache: 'no-store',
+    },
+  )
   return res.json()
 }
 
